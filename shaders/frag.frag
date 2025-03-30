@@ -1,10 +1,10 @@
 #version 130
 
 // Uniform color (RGBA)
-uniform vec4 modelColor; //MUST BE SET TO modelColor
+uniform vec4 color;
 
 out vec4 fragColor;
 
 void main() {
-    fragColor = modelColor;  // Set the output color
+    fragColor = color;  // Set the output color
 }

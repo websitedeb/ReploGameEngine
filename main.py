@@ -5,7 +5,7 @@ app = Engine()
 
 app.setColor(0, 0, 0, 1)
 
-teapot: Model = createModel("obj models/teapot.obj", "image.png", 1, createCoords(0, 0, 0), createCoords(0, 0, 0), createColor(255, 0, 0, 1), createShader("shaders/vert.vert", "shaders/frag.frag"))
+teapot: Model = createModel("models/teapot.obj", "textures/image.png", 1, createCoords(0, 0, 0), createCoords(0, 0, 0), createColor(255, 0, 0, 1), createShader("shaders/vert.vert", "shaders/frag.frag", "color"))
 
 app.load_model(teapot)
 

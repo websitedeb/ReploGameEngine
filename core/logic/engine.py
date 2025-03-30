@@ -31,6 +31,6 @@ class Engine(ShowBase):
             if model.shader:
                 self.shader = Shader.load(Shader.SL_GLSL, vertex=model.shader.vertexShader, fragment=model.shader.fragmentShader)
                 self.model.setShader(self.shader)
-                self.model.setShaderInput("modelColor", LColor(model.color.R, model.color.G, model.color.B, model.color.A))
+                self.model.setShaderInput(f"{model.shader.fragColorVarName}", LColor(model.color.R, model.color.G, model.color.B, model.color.A))
         else:
             print("Model isnt the right type\nModel Type: ", type(model))
