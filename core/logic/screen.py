@@ -2,7 +2,7 @@ from direct.showbase.ShowBase import ShowBase
 from ..types import Model
 from panda3d.core import Shader, LColor
 
-class Screen(ShowBase):
+class Engine(ShowBase):
     def __init__(self) -> None:
         ShowBase.__init__(self)
 

@@ -1,9 +1,12 @@
-from core.logic.screen import Screen
+from core.logic.screen import Engine
 from core.types import *
 
-app = Screen()
+app = Engine()
 
-teapot : Model = createModel("obj models/teapot.obj", "image.png", 1, createCoords(0, 10, 0), createCoords(0, 0, 0), None, createShader("shaders/vert.vert", "shaders/frag.frag"))
+app.setColor(0, 0, 0, 0)
+
+teapot : Model = createModel("obj models/teapot.obj", "image.png", 2, createCoords(0, -10, 0), createCoords(0, 0, 0), createColor(225, 0, 0, 0), createShader("shaders/vert.vert", "shaders/frag.frag"))
+app.camera.setPos(0, -20, 0)
 
 app.load_model(teapot)
 
