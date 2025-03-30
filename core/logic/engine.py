@@ -22,15 +22,18 @@ class Engine(ShowBase):
             if model.color:
                 self.model.setColorScale(LColor(model.color.R, model.color.G, model.color.B, model.color.A))
 
-            self.texture = self.loader.loadTexture(model.textureFile)
-            if self.texture:
-                self.model.setTexture(self.texture, 1)
-            else:
-                print(f"Failed to load texture: {self.texture}")
+            if model.textureFile:
+                self.texture = self.loader.loadTexture(model.textureFile)
+                if self.texture:
+                    self.model.setTexture(self.texture, 1)
+                else:
+                    print(f"Failed to load texture: {self.texture}")
 
             if model.shader:
                 self.shader = Shader.load(Shader.SL_GLSL, vertex=model.shader.vertexShader, fragment=model.shader.fragmentShader)
                 self.model.setShader(self.shader)
                 self.model.setShaderInput(f"{model.shader.fragColorVarName}", LColor(model.color.R, model.color.G, model.color.B, model.color.A))
+            
+            return self.model
         else:
             print("Model isnt the right type\nModel Type: ", type(model))
