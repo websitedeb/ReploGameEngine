@@ -1,5 +1,6 @@
 from direct.showbase.ShowBase import ShowBase
 from ..types import Model
+from typing import Any
 from panda3d.core import Shader, LColor
 
 class Engine(ShowBase):
@@ -10,7 +11,7 @@ class Engine(ShowBase):
         """Set the background color (normalized to 0-1 range)."""
         self.setBackgroundColor(r / 255.0, g / 255.0, b / 255.0, a)
 
-    def load_model(self, model : Model) -> None:
+    def load_model(self, model : Model) -> list | Any:
         if isinstance(model, Model):
             self.model = self.loader.loadModel(model.modelFile)
             if self.model.isEmpty():
