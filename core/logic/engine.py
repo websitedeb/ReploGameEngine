@@ -11,11 +11,10 @@ class Engine(ShowBase):
         self.setBackgroundColor(r / 255.0, g / 255.0, b / 255.0, a)
 
     def load_model(self, model : Model) -> None:
-        if type(model) == Model:
+        if isinstance(model, Model):
             self.model = self.loader.loadModel(model.modelFile)
             if self.model.isEmpty():
                 print(f"Failed to load model: {model}")
-
             self.model.reparentTo(self.render)
             self.model.setScale(model.scale)
             self.model.setPos(model.position.X, model.position.Y, model.position.Z)
@@ -33,3 +32,5 @@ class Engine(ShowBase):
                 self.shader = Shader.load(Shader.SL_GLSL, vertex=model.shader.vertexShader, fragment=model.shader.fragmentShader)
                 self.model.setShader(self.shader)
                 self.model.setShaderInput("modelColor", LColor(model.color.R, model.color.G, model.color.B, model.color.A))
+        else:
+            print("Model isnt the right type\nModel Type: ", type(model))
